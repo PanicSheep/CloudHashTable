@@ -1,0 +1,1 @@
+python -m grpc_tools.protoc -I cloud_hashtable --python_out=cloud_hashtable --grpc_python_out=cloud_hashtable hashtable.proto

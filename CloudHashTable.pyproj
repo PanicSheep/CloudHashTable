@@ -1,0 +1,71 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>b9fde2c3-7b7d-4707-99bb-f7bfbf4de36e</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>CloudHashTable</Name>
+    <RootNamespace>CloudHashTable</RootNamespace>
+    <TestFramework>unittest</TestFramework>
+    <InterpreterId>MSBuild|.venv|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="benchmark.py" />
+    <Compile Include="cloud_hashtable\config.py" />
+    <Compile Include="cloud_hashtable\remote_hashtable.py" />
+    <Compile Include="cloud_hashtable\file_storage.py" />
+    <Compile Include="cloud_hashtable\hashtable.py" />
+    <Compile Include="cloud_hashtable\hashtable_pb2.py" />
+    <Compile Include="cloud_hashtable\hashtable_pb2_grpc.py" />
+    <Compile Include="cloud_hashtable\storage.py" />
+    <Compile Include="cloud_hashtable\server.py" />
+    <Compile Include="cloud_hashtable\__init__.py" />
+    <Compile Include="tests\test_file_storage.py" />
+    <Compile Include="tests\test_hashtables.py" />
+    <Compile Include="tests\test_integration.py" />
+    <Compile Include="tests\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cloud_hashtable\hashtable.proto" />
+    <Content Include="requirements.txt" />
+    <Content Include="tests\test_system.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include=".venv\">
+      <Id>.venv</Id>
+      <Version>3.10</Version>
+      <Description>.venv (Python 3.10 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="cloud_hashtable\" />
+    <Folder Include="tests\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

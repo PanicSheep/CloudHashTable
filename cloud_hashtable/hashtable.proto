@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+service HashTable {
+	rpc Insert (KeyValue) returns (google.protobuf.BoolValue) {}
+	rpc Delete (Key) returns (google.protobuf.BoolValue) {}
+	rpc LookUp (Key) returns (Value) {}
+}
+
+message KeyValue {
+	bytes key = 1;
+	bytes value = 2;
+}
+
+message Key {
+	bytes key = 1;
+}
+
+message Value {
+	optional bytes value = 1;
+}
