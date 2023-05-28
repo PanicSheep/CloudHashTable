@@ -4,11 +4,11 @@ from cloud_hashtable import Server, RemoteHashTable
 
 try:
     key_length = 16
-    value_length = 16
+    value_length = 17
     port = 12345
 
     start = time.perf_counter()
-    server = Server(port, b'\x00' * key_length, value_length, 32 * 1024 * 1024, ['temp_file'], 0)
+    server = Server(port, b'\x00' * key_length, value_length, 32 * 1024 * 1024, ['temp_file'])
     end = time.perf_counter()
     file_size = 1024 # MB
     speed = round(file_size / (end - start))

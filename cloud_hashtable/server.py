@@ -42,6 +42,7 @@ class Server:
         value_length: int,
         file_size: int,
         files: list[str],
+        probing_depth: int,
         config_file: str|None = None
     ) -> None:
         self.port = port
@@ -60,7 +61,7 @@ class Server:
                 create_file(file, init_item, file_size)
 
         self.storage = MultiFileStorage(files, key_length + value_length)
-        self.hashtable = SpecialKey_MultiHash_HashTable(self.storage, empty_key)
+        self.hashtable = SpecialKey_MultiHash_HashTable(self.storage, empty_key, 100, probing_depth)
         self.rpc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=1))
         add_HashTableServicer_to_server(HashTableServicer(self.hashtable), self.rpc_server)
         self.rpc_server.add_insecure_port(f'[::]:{self.port}')
