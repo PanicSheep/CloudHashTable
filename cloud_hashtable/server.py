@@ -42,7 +42,7 @@ class Server:
         value_length: int,
         file_size: int,
         files: list[str],
-        probing_depth: int,
+        probing_depth: int|None = None,
         config_file: str|None = None
     ) -> None:
         self.port = port

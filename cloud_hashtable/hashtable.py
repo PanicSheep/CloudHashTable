@@ -83,12 +83,12 @@ class SpecialKey_MultiHash_HashTable(HashTable):
     - special 'empty_key' to mark a bucket as empty.
     """
 
-    def __init__(self, storage: Storage, empty_key: bytes, max_probing_depth: int = 100, probing_depth: int = 0) -> None:
+    def __init__(self, storage: Storage, empty_key: bytes, max_probing_depth: int = 100, probing_depth: int|None = None) -> None:
         self.storage: Storage = storage
         self.empty_key = empty_key
         self.key_len = len(self.empty_key)
         self.max_probing_depth = max_probing_depth
-        self.probing_depth = probing_depth
+        self.probing_depth = probing_depth or 0
 
     def __hash(self, key: bytes, seed) -> int:
         return mmh3.hash128(key, seed, signed=False) % len(self.storage)
